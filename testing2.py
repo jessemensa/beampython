@@ -22,7 +22,7 @@ pipeline_options = PipelineOptions.from_dictionary(pipeline_options)
 p1 = beam.Pipeline(options=pipeline_options) # Create a pipeline object 
 
 serviceAccount = "apache-dataflow-344ca6a08675.json"
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= "/Users/jessmensa/Desktop/Beamgcp/apache-dataflow-344ca6a08675.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]= "apache-dataflow-344ca6a08675.json"
 
 
 # We will create a function that will be used inside the Pipelines 
