@@ -14,10 +14,10 @@ from apache_beam.options.pipeline_options import PipelineOptions
 pipeline_options = {
     'project': 'apache-dataflow', 
     'runner': 'DataflowRunner', 
-    'region': 'us-central1',
+    'region': 'southamerica-east1',
     'stage_location': 'gs://bucketforexample/temp',
     'temp_location': 'gs://bucketforexample/temp', 
-    'template_location': 'gs://bucketforexample/template/batch_job_df_gcs_another_final' 
+    'template_location': 'gs://bucketforexample/template/batch_job_df_gcs_another_final_another' 
 }
 
 pipeline_options = PipelineOptions.from_dictionary(pipeline_options) 
@@ -36,7 +36,7 @@ class Filter(beam.DoFn):
 
 pCollection = (
      p1 
-     | "Import Data" >> beam.io.ReadFromText("gs://bucketforexample/results.csv-00000-of-00001", skip_header_lines=1) 
+     | "Import Data" >> beam.io.ReadFromText("gs://bucketforexample/property3.csv", skip_header_lines=1) 
      | "Split by commas" >> beam.Map(lambda record: record.split(',')) 
      | "Filter Delays" >> beam.ParDo(Filter()) # Use the ParDo Transform 
      | "Create a key value pair" >> beam.Map(lambda record: (record[3], int(record[13])))
@@ -45,7 +45,7 @@ pCollection = (
 # What is the difference between CombinePerKey and combiners.Count.PerKey()
 secondPcollection = (
     p1 
-    | "Import Second Data" >> beam.io.ReadFromText("gs://bucketforexample/results.csv-00000-of-00001", skip_header_lines=1)
+    | "Import Second Data" >> beam.io.ReadFromText("gs://bucketforexample/property3.csv", skip_header_lines=1)
     | "Split by commas 2" >> beam.Map(lambda record: record.split(',')) 
     | "Filter Delays 2" >> beam.ParDo(Filter()) 
     | "Create a key value pair 2" >> beam.Map(lambda record: (record[3], int(record[13])))
@@ -55,7 +55,7 @@ secondPcollection = (
 theTable = (
     {'First': pCollection, 'Second': secondPcollection} 
     | beam.CoGroupByKey() 
-    | "Save to Google Cloud Storage" >> beam.io.WriteToText("gs://bucketforexample/output/secondresults.csv")
+    | "Save to Google Cloud Storage" >> beam.io.WriteToText("gs://bucketforexample/output/secondresultsfinal.csv")
 )
 
 p1.run() 
