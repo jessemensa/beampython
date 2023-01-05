@@ -14,7 +14,7 @@ from apache_beam.options.pipeline_options import PipelineOptions
 pipeline_options = {
     'project': 'apache-dataflow', 
     'runner': 'DataflowRunner', 
-    'region': 'europe-west2',
+    'region': 'us-central1',
     'stage_location': 'gs://bucketforexample/temp',
     'temp_location': 'gs://bucketforexample/temp', 
     'template_location': 'gs://bucketforexample/template/batch_job_df_gcs_another' 
