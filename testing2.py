@@ -17,7 +17,7 @@ pipeline_options = {
     'region': 'us-central1',
     'stage_location': 'gs://bucketforexample/temp',
     'temp_location': 'gs://bucketforexample/temp', 
-    'template_location': 'gs://bucketforexample/template/batch_job_df_gcs_another' 
+    'template_location': 'gs://bucketforexample/template/batch_job_df_gcs_another_final' 
 }
 
 pipeline_options = PipelineOptions.from_dictionary(pipeline_options) 
