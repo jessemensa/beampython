@@ -1,4 +1,5 @@
 # PARDO => DO SOMETHING IN PARALLEL 
+# THIS RUNS THE FILE LOCALLY AND INTO CLOUD STORAGE 
 import apache_beam as beam 
 import os 
 

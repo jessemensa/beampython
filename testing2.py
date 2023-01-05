@@ -1,7 +1,9 @@
 # MOVE FILE FROM CLOUD STORAGE TO CLOUD STORAGE 
 # HAVE TO CREATE FOUR FOLDERS IN CLOUD STORAGE 
-#  TEMP FOLDER, TEMPLATE FOLDER, OUTPUT FOLDER 
-
+#  TEMP FOLDER, TEMPLATE FOLDER, OUTPUT FOLDER
+# 
+# THIS CREATED A DATAFLOW TEMPLATE  
+# THEN NEXT WE HAVE TO CREATE THE JOB ITSELF 
 import apache_beam as beam 
 import os 
 # WHAT IS PIPELINE OPTIONS ?? 
@@ -12,7 +14,7 @@ from apache_beam.options.pipeline_options import PipelineOptions
 pipeline_options = {
     'project': 'apache-dataflow', 
     'runner': 'DataflowRunner', 
-    'region': 'europe-west2 (London)',
+    'region': 'europe-west2',
     'stage_location': 'gs://bucketforexample/temp',
     'temp_location': 'gs://bucketforexample/temp', 
     'template_location': 'gs://bucketforexample/template/batch_job_df_gcs' 
